@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <h3 class="modal-title" id="modal-title">Edit Item</h3>
+</div>
+<div class="modal-body" id="modal-body">
+  <form class="form-horizontal" name="itemForm" ng-submit="ok()">
+    <div class="form-group">
+      <label class="control-label col-sm-offset-1 col-sm-2 text-nowrap" for="itemLabel">Label</label>
+      <div class="controls col-sm-7">
+        <input class="form-control" type="text" ng-model="item.label" id="itemLabel" name="itemLabel" name="itemLabel" />
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-default" type="button" ng-click="ok()">OK</button>
+  <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
+</div>
