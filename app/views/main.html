@@ -1,23 +1,37 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+<div class="row swimlanes">
+  <div class="col-md-4" ng-repeat="list in swimlanes">
+    <div class="panel panel-info">
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
+      <div class="panel-heading">
+        <h3>{{ list.listName }}</h3>
+      </div>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
+      <div class="panel-body">
+        <ul dnd-list dnd-drop="onDrop(list, item, index)">
+          <div class="row" ng-repeat="item in list.items">
+            <div class="col-md-8">
+              <li class="algn"
+                  dnd-draggable="getSelectedItemsIncluding(list, item)"
+                  dnd-dragstart="onDragstart(list, event)"
+                  dnd-moved="onMoved(list)"
+                  dnd-dragend="list.dragging = false"
+                  dnd-selected="item.selected = !item.selected"
+                  ng-class="{'selected': item.selected}"
+                  ng-hide="list.dragging && item.selected"
+                  >
+                  {{ item.label }}
+              </li>
+            </div>
+            <div class="col-md-4">
+              <div class="algn btn-group pull-right">
+                <a class="btn btn-default" href="#"><i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+                <a class="btn btn-default" href="#"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </div>
+        </ul>
+      </div>
 
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+    </div>
+  </div>
 </div>
